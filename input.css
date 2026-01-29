@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+:root {
+  --color-primary: #2563eb;   /* xanh dương */
+  --color-dark: #111827;      /* đen */
+  --color-secondary: #7099f2; /* xanh dương lợt */
+  --color-bg: #f5f5f5;        /* background */
+}
