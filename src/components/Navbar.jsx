@@ -14,10 +14,10 @@ export default function Navbar() {
     return (
         <> 
             <nav className="flex items-center justify-between sticky top-0 w-full h-20 select-none z-50 bg-white">
-                <a href="/home" className="hidden md:inline-block "><Logo></Logo></a>
+                <a href="/" className="hidden md:inline-block "><Logo></Logo></a>
                 <ul className="md:flex hidden justify-between items-center p-5 gap-4">
                     <li>
-                        <Link className="p-4 text-xl text-nowrap hover:text-[var(--color-primary)] active:underline" to={"/home"}>Trang chủ</Link>
+                        <Link className="p-4 text-xl text-nowrap hover:text-[var(--color-primary)] active:underline" to={"/"}>Trang chủ</Link>
                     </li>
                     <li>
                         <Link className="p-4 text-xl whitespace-nowrap hover:text-[var(--color-primary)] active:underline" to={"/products"}>Sản phẩm</Link>

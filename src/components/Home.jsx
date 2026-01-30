@@ -1,45 +1,29 @@
-import { useEffect, useState } from "react"
 import CategoryItem from "./CategoryItem";
 import ProductItem from "./ProductItem";
 import Footer from "./Footer";
+import {Link} from "react-router-dom"
 
-export default function Home() {
-    const [categories, setCategories] = useState([])
-    const [products, setProducts] = useState([]);
-    
-    useEffect(()=>{
-        async function getProducts() {
-            const response = await fetch("https://api.escuelajs.co/api/v1/products")
-            const data = await response.json()
-            console.log(data)
-            setProducts(data);
-        }
-        getProducts()
-    }, [])
-    useEffect(()=>{
-        async function getCategories() {
-            const response = await fetch("https://api.escuelajs.co/api/v1/categories")
-            const data = await response.json()
-            console.log(data)
-            setCategories(data)
-        }
-        getCategories()
-    }, [])
+export default function Home({categories,products}) {
+
     return (
         <>
             <div>
                 <h1 className="text-4xl text-center p-10 text-white select-none bg-blue-400 rounded-2xl">“Tất cả sản phẩm, trong một nơi.”</h1>
                 <section>
                     <h2 className="text-2xl text-[var(--color-primary)] mt-10 mb-5">Danh mục sản phẩm</h2>
-                    <div className="grid md:grid-cols-6 grid-rows-[1fr_auto_auto] gap-6 grid-cols-3">
+                    <div className="grid md:grid-cols-6 grid-rows-[auto_1fr] gap-6 grid-cols-3">
                         {
                             categories.slice(0,5).map((item)=>{
-                                return <CategoryItem className={"row-span-3 grid grid-rows-subgrid gap-0 hover:shadow-2xl bg-white rounded"} 
-                                                img={item.image}
-                                                key={item.id}
-                                                name={item.name}
+                                return <Link to={"/categorydetail/"+item.id}
+                                            key={item.id}
+                                            className="row-span-2 grid grid-rows-subgrid"
                                         >
-                                        </CategoryItem>
+                                            <CategoryItem className={"row-span-2 grid grid-rows-subgrid gap-0 hover:shadow-2xl rounded"} 
+                                                    img={item.image}
+                                                    name={item.name}
+                                            >
+                                            </CategoryItem>
+                                        </Link>
                             })
                         }
                     </div>
