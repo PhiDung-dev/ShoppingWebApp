@@ -10,25 +10,35 @@ import { useEffect, useState } from "react"
 function App() {
     const [categories, setCategories] = useState([])
     const [products, setProducts] = useState([]);
-   
+    const [users, setUsers] = useState([])
    
     useEffect(()=>{
-        async function getProducts() {
-            const response = await fetch("https://api.escuelajs.co/api/v1/products")
-            const data = await response.json()
-            console.log(data)
-            setProducts(data);
-        }
-        getProducts()
+      async function getProducts() {
+        const response = await fetch("https://api.escuelajs.co/api/v1/products")
+        const data = await response.json()
+        console.log(data)
+        setProducts(data);
+      }
+      getProducts()
     }, [])
     useEffect(()=>{
-        async function getCategories() {
-            const response = await fetch("https://api.escuelajs.co/api/v1/categories")
-            const data = await response.json()
-            console.log(data)
-            setCategories(data)
-        }
-        getCategories()
+      async function getCategories() {
+        const response = await fetch("https://api.escuelajs.co/api/v1/categories")
+        const data = await response.json()
+        console.log(data)
+        setCategories(data)
+      }
+      getCategories()
+    }, [])
+
+    useEffect(()=>{
+      async function getUser() {
+        const response = await fetch("https://api.escuelajs.co/api/v1/users")
+        const data = await response.json()
+        console.log(data)
+        setUsers(data)
+      }
+      getUser()
     }, [])
 
   return (
@@ -40,8 +50,8 @@ function App() {
                 <Route path="/" element={<Home products={products} categories={categories}></Home>}></Route>
                 <Route path="/products" element={<Products products={products}></Products>}></Route>
                 <Route path="/cart" element={<Cart></Cart>}></Route>
-                <Route path="/signin" element={<SignIn></SignIn>}></Route>   
-                <Route path="/login" element={<LogIn></LogIn>}></Route>
+                <Route path="/signin" element={<SignIn users={users}></SignIn>}></Route>   
+                <Route path="/login" element={<LogIn users={users}></LogIn>}></Route>
                 <Route path="/categorydetail/:categoryid" element={<CategoryDetail products={products}></CategoryDetail>}></Route>
               </Routes>
             </div>

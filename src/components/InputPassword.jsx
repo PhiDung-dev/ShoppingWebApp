@@ -1,15 +1,9 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { BiHide, BiShow } from "react-icons/bi";
 
 
-export default function InputPassWord({placehoder, children}) {
-    const [password, setPassWord] = useState("")
-    const refPass = useRef()
+export default function InputPassWord({placehoder, children, password, onChange}) {
     const [isShowPass, setIsShowPass] = useState(false) 
-
-    function handleSetPassWord(e) {
-        setPassWord(e.target.value)
-    }
 
     function handleHidePass() {
         setIsShowPass(!isShowPass)
@@ -29,8 +23,7 @@ export default function InputPassWord({placehoder, children}) {
                         className="text-xl border rounded pl-4 pr-10"
                         placeholder={placehoder}
                         value={password}
-                        onChange={handleSetPassWord}
-                        ref={refPass}
+                        onChange={onChange}
                     />
                     <span className="absolute right-3 top-[50%] translate-y-[-50%] cursor-pointer"
                         onClick={handleHidePass}
