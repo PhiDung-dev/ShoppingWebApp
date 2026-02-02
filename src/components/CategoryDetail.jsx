@@ -23,10 +23,8 @@ export default function CategoryDetail({products}) {
                         {
                             categoryFilter.map((item)=>{
                                     return <ProductItem className={"row-span-3 grid grid-rows-subgrid gap-0 hover:shadow-2xl bg-white rounded-2xl"} 
-                                            img={item.images[0]}
-                                            key={item.id}
-                                            productName={item.title}
-                                            price={item.price}
+                                                key={item.id}
+                                                product={item}
                                             >
                                             </ProductItem>
                             })

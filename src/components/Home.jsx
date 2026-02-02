@@ -35,10 +35,8 @@ export default function Home({categories,products}) {
                         {
                             products.slice(0, 12).map((item)=>{
                                 return <ProductItem className={"row-span-3 grid grid-rows-subgrid gap-0 hover:shadow-2xl bg-white rounded-2xl"} 
-                                                img={item.images[0]}
+                                                product={item}    
                                                 key={item.id}
-                                                productName={item.title}
-                                                price={item.price}
                                         >
                                         </ProductItem>
                             })
@@ -52,10 +50,8 @@ export default function Home({categories,products}) {
                         {
                             products.slice(12, 24).map((item)=>{
                                 return <ProductItem className={"row-span-3 grid grid-rows-subgrid gap-0 hover:shadow-2xl bg-white rounded-2xl"} 
-                                                img={item.images[0]}
                                                 key={item.id}
-                                                productName={item.title}
-                                                price={item.price}
+                                                product={item}
                                         >
                                         </ProductItem>
                             })
